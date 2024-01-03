@@ -1,0 +1,4 @@
+Get-VM | Select-Object VMId | Get-VHD | Select-Object vhdtype,path,@{Name="MaxSizeGB";Expression={$_.Size/1GB}} | Export-Csv C:\report_Name_total.csv -Delimiter ';' -NoTypeInformation
+
+
+Get-VM | Select-Object VMId | Get-VHD | select vmname,vhdtype,path,@{label='Size(GB)';expression={$_.filesize/1gb -as [int]}} | Export-Csv C:\report_Name.csv -Delimiter ';' -NoTypeInformation
